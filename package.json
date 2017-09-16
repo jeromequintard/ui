@@ -1,0 +1,93 @@
+{
+  "name": "osiki-ui",
+  "version": "1.0.2",
+  "keywords": [
+    "Ikise",
+    "Osiki",
+    "Osi.iki"
+  ],
+  "license": "MIT",
+  "repository": "https://ikise.visualstudio.com/Ikise/_git/Os.iki.GUI?path=packages/osiki-ui",
+  "description": "Ikise Osiki UI",
+  "author": "Jérôme Quintard <jquintard@ikise.com>",
+  "homepage": "http://www.ikise.com",
+  "main": "./dist/lib.js",
+  "scripts": {
+    "watch": "yarn run build:watch",
+    "build": "yarn run build:dev",
+    "build:dev": "yarn run clean && webpack --config config/webpack.dev.js --progress",
+    "build:prod": "yarn run clean && webpack --config config/webpack.prod.js --progress --bail",
+    "build:watch": "webpack --config config/webpack.dev.js --progress --profile --watch",
+    "stats": "webpack --config config/webpack.dev.js --json > stats.json",
+    "pack": "npm pack",
+    "clean": "rimraf dist",
+    "test": "jest",
+    "test:update": "yarn test -- -u",
+    "test:coverage": "yarn test -- --coverage"
+  },
+  "jest": {
+    "testMatch": [
+      "**/?(*.)spec.js?(x)"
+    ],
+    "verbose": true,
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "src/client",
+      "node_modules"
+    ],
+    "moduleNameMapper": {
+      "^lib/(.*)$": "<rootDir>/src/client/lib/$1",
+      "^components/(.*)": "<rootDir>/src/client/components/$1",
+      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest.mock.file.js",
+      "\\.(css|scss)$": "<rootDir>/config/jest.mock.styles.js"
+    },
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.2",
+    "babel-loader": "^7.0.0",
+    "babel-preset-osiki": "^1.0.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-config-osiki": "^1.0.0",
+    "eslint-import-resolver-webpack": "^0.8.1",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-no-unused-vars-rest": "^1.0.6",
+    "eslint-plugin-react": "^6.10.3",
+    "rimraf": "^2.6.1"
+  },
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-register": "^6.24.1",
+    "global": "^4.3.1",
+    "happypack": "^3.1.0",
+    "md5": "^2.2.1",
+    "optimize-js-plugin": "0.0.4",
+    "osiki-core": "^1.0.0",
+    "prop-types": "^15.5.8",
+    "query-string": "^4.3.2",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.6.0",
+    "redux-saga": "^0.15.3",
+    "reselect": "^3.0.0",
+    "webpack": "^2.6.1",
+    "webpack-md5-hash": "^0.0.5",
+    "webpack-merge": "^4.1.0"
+  },
+  "typeAcquisition": {
+    "include": [
+      "react",
+      "redux"
+    ]
+  }
+}
