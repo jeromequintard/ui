@@ -1,0 +1,16 @@
+export const rules = {
+  required: (values, value) => (value !== '' && value !== null && value !== undefined),
+  empty: (values, value) => (value === ''),
+  istrue: (values, value) => (value === true),
+  isfalse: (values, value) => (value === false),
+  minlength: (values, value, length) => (value.length >= length),
+  maxlength: (values, value, length) => (value.length <= length),
+  rangelength: (values, value, range) => (value.length <= range[0] && value.length >= range[1]),
+  equals: (values, value1, value2) => (value1 === value2),
+  equalsField: (values, value, field) => (value === values[field]),
+  match: (values, value, pattern) => (pattern.test(value)),
+  alpha: (values, value) => (rules.match(values, value, /[a-zA-Z]+/i)),
+  numeric: (values, value) => (rules.match(values, value, /\d+/i)),
+  alphanumeric: (values, value) => (rules.match(values, value, /[a-zA-Z0-9]+/i)),
+  email: (values, value) => (rules.match(values, value, /^[\w\.-]+@(?:[\w]+\.)+[a-zA-Z]{2,}$/i)),
+};
